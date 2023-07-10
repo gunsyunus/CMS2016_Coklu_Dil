@@ -1,0 +1,52 @@
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.banner.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">BANNERLAR <span class="badge"><?php echo $banners->getTotal(); ?></span></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Sıralama</th>
+          <th>Banner Adı</th>
+          <th>Resim</th>
+          <th>Durumu</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+     	<?php foreach($banners as $banner): ?>
+        <tr>
+          <th><?php echo $banner->sort; ?></th>
+          <td><?php echo $banner->title; ?></td>
+          <td><img src="<?php echo URL::to($banner->image); ?>" class="banner img-thumbnail img-responsive" /></td>          
+          <td><?php echo $banner->status=='1' ? '<span class="label label-success">AKTİF</span>' : '<span class="label label-danger">PASİF</span>'; ?></td>
+          <td class="text-right">            
+          <div class="btn-group">
+          <a href="<?php echo URL::to('Pv3/banner/edit/'.$banner->id_banner.''); ?>" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="caret"></span>
+          <span class="sr-only">Menü</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right">
+          <li class="delete"><a href="<?php echo URL::to('Pv3/banner/delete/'.$banner->id_banner.''); ?>"><i class="fa fa-times"></i> Banner Sil</a></li>
+          </ul>
+          </div>
+          </td>
+        </tr> 
+   	  <?php endforeach; ?>      
+      </tbody>
+    </table>
+   	<div class="pagination"> <?php echo $banners->links(); ?> </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

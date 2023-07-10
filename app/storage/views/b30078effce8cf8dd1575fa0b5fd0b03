@@ -1,0 +1,84 @@
+<?php $__env->startSection('title', 'Arama - '.$settings->title.''); ?>
+<?php $__env->startSection('keyword', 'arama,'.$settings->keyword.''); ?>
+<?php $__env->startSection('description', 'Arama - '.$settings->description.''); ?>
+
+<?php $__env->startSection('meta'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('body'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="inner">
+        <ul>
+          <li class="home"><a href="<?php echo URL::to('/'); ?>">Anasayfa</a><span>&mdash;›</span></li>          
+          <li class="category13"><strong>Arama</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="main-container col2-left-layout">
+  <div class="container">
+    <div class="row">
+      <div class="col-main col-sm-9 col-sm-push-3">
+        <article class="col-main">
+          <div class="page-title" style="padding-left:20px;"><b>Aranan Kelime : </b> <?php echo $searchText; ?> <span style="float:right; color:#989898; font-style:italic;">Toplam <b><?php echo count($products); ?></b> ürün bulundu</span></div>
+          <div class="category-products pull-left">
+            <ul class="pdt-list products-grid zoomOut play">
+              <?php foreach($products as $product): ?>
+              <li class="item item-animate last">
+                <div class="item-inner">
+                  <div class="product-wrapper">
+                    <div class="thumb-wrapper">                    
+                      <?php if(!empty($product->promotion_text)): ?> <div class="new-label new-top-left"><?php echo $product->promotion_text; ?></div> <?php endif; ?>
+                      
+                    <div class="thumb-wrapper"><a href="<?php echo Sef::product($product->sef_url,$product->id_product); ?>" class="thumb"><span class="face"><img src="<?php echo URL::to($product->image_small_1); ?>" alt="" width="250"></span><span class="quick-view" data-product_id="34"><span><?php echo $product->name; ?></span></span></a></div>
+                    <div class="actions"><span class="add-to-links"><a href="<?php echo Sef::product($product->sef_url,$product->id_product); ?>" class="link-compare" title=""><span></span></a></span></div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title"><a href="<?php echo Sef::product($product->sef_url,$product->id_product); ?>" title=""><?php echo $product->name; ?></a></div>
+                      <div class="item-content">
+                        <div class="item-price">
+                          <div class="price-box">
+                            <span class="regular-price"><span class="price"><?php echo $product->bname; ?></span></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9"> 
+        <aside class="col-left sidebar">
+
+          <div class="side-nav-categories">
+            <div class="block-title"><?php echo $designs->product_title_text; ?></div>
+            <div class="box-content box-category">
+              <ul id="magicat">
+              <?php foreach($categories as $category): ?>      
+                <?php echo NodeList::getAccordionMenu($category); ?>
+
+              <?php endforeach; ?>
+              </ul>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

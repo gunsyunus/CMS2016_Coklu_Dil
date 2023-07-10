@@ -1,0 +1,54 @@
+
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.photo.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul"><b><?php echo $photoAlbum->name; ?></b> / GALERİ</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+
+    <div class="gallery">
+      <?php echo Form::open(['url'=>'Pv3/photo-item/add','role'=>'form','class'=>'form-horizontal','files'=>true]); ?>
+
+      <?php echo Form::hidden('gallery_id', $photoAlbum->id_gallery ); ?>
+
+      <?php echo Form::hidden('name', $photoAlbum->name ); ?> 
+      <?php echo Form::hidden('type', $photoAlbum->type ); ?>
+
+      <?php echo Form::file('images[]', array('multiple'=>true)); ?>
+
+          
+          <?php if($photoAlbum->type=='square'): ?> <?php echo Tooltip::standard('Önerilen : 175 x 175 ölçülerinde ve JPG,PNG,GIF olmalıdır.'); ?>
+
+          <?php elseif($photoAlbum->type=='rectangle'): ?> <?php echo Tooltip::standard('Önerilen : 700 x 440 ölçülerinde ve JPG,PNG,GIF olmalıdır.'); ?>
+
+          <?php elseif($photoAlbum->type=='vertical'): ?> <?php echo Tooltip::standard('Önerilen : 600 x 726 ölçülerinde ve JPG,PNG,GIF olmalıdır.'); ?>
+
+          <?php endif; ?>
+
+      <button type="submit" class="btn btn-success right-space"><i class="fa fa-plus-circle"></i></button> 
+      <?php echo Form::close(); ?>
+
+    </div>
+
+ 	<div class="clearfix"></div>
+
+    <?php foreach($galleries as $gallery): ?>
+      <div class="gallery">
+        <img src="<?php echo URL::to($gallery->image_small); ?>" class="img-rounded img-responsive">
+        <a href="<?php echo URL::to('Pv3/photo-item/delete/'.$gallery->id_photo.''); ?>" class="btn btn-danger btn-left"><i class="fa fa-times"></i> SİL</a>
+      </div>        
+    <?php endforeach; ?>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

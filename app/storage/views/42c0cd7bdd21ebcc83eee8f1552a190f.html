@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title><?php echo Lang::get('software.title'); ?></title>
+	<?php echo HTML::style('panelv3/css/bootstrap.min.css'); ?>
+
+	<?php echo HTML::style('panelv3/css/bootstrap-theme.min.css'); ?>
+
+	<?php echo HTML::style('panelv3/css/login.min.css'); ?>
+
+	<?php echo HTML::style('panelv3/css/font-awesome.min.css'); ?>
+
+</head>
+<body>	
+	<div class="container">
+	<div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><?php echo Lang::get('software.title'); ?></h3>
+            </div>
+            <div class="panel-body">         
+                <?php echo Form::open(['url'=>'Pv3/login','role'=>'form','class'=>'form-signin']); ?>
+
+                    <img src="<?php echo URL::to('panelv3/img'); ?>/login.png" width="125">
+    	    		<h2 class="form-signin-heading">Yönetici Girişi</h2>
+		            <div class="icon-addon addon-lg">
+        				<input type="text" class="form-control" placeholder="Yönetici Adı" name="email" required>
+                	    <label for="kullanici" class="glyphicon glyphicon-user"></label>
+                	</div>
+	                <div class="icon-addon addon-lg">
+    	    			<input type="password" class="form-control" placeholder="Şifre" name="password" required>
+        	            <label for="sifre" class="glyphicon glyphicon-lock"></label>
+            	    </div>
+        			<button class="btn btn-lg btn-primary btn-block" type="submit">Giriş Yap</button>
+		    	<?php echo Form::close(); ?>
+
+            </div>
+           <div class="panel-footer"><?php echo Lang::get('software.copyright'); ?></div>
+          </div>
+                    <?php if(Session::has('alertTitle')): ?>
+                    <div class="alert alert-<?php echo Session::get("alertClass"); ?> alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong><?php echo Session::get("alertTitle"); ?></strong> <?php echo Session::get("alertMessage"); ?>
+
+                    </div>
+                    <?php endif; ?>      
+                    <?php if(isset($logout)): ?>
+                    <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>BAŞARIYLA,</strong> GÜVENLİ ÇIKIŞ YAPILDI
+                    </div>
+                    <?php endif; ?>
+        </div>
+	</div>
+	</div>
+    <?php echo HTML::script('panelv3/js/jquery-1.11.3.min.js'); ?>	
+    <?php echo HTML::script('panelv3/js/bootstrap.min.js'); ?>
+
+</body>
+</html>

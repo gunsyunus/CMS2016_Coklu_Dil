@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ Lang::get('software.title') }}</title>
+    {{ HTML::style('panelv3/css/bootstrap.min.css') }}
+    {{ HTML::style('panelv3/css/bootstrap-theme.min.css') }}    
+    {{ HTML::style('panelv3/css/panel.min.css') }}
+    {{ HTML::style('panelv3/css/font-awesome.min.css') }}
+    {{ HTML::style('panelv3/css/scrollbar.min.css') }}
+    @yield('meta')
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Menü</span><i class="fa fa-user"></i>
+        </button>
+        <a class="navbar-brand" href="{{ URL::to('Pv3/Dashboard') }}">{{ Lang::get('software.panel') }} <b>{{ Lang::get('software.version') }}</b></a>
+        <button class="btn left-sidebar-toggle btn-header"><i class="fa fa-bars"></i></button>        
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">         
+              <li><a href="{{ URL::to('/') }}" target="_blank"><i class="fa fa-repeat nav-icon"></i> Siteyi Görüntüle</a></li>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Merhaba, {{ Auth::user()->name.' '.Auth::user()->surname }} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ URL::to('Pv3/profile') }}"><i class="fa fa-user nav-icon"></i> Profilim</a></li>
+                <li><a href="{{ URL::to('Pv3/profile') }}"><i class="fa fa-lock nav-icon"></i> Şifre Değiştir</a></li>
+                <li><a href="{{ URL::to('Pv3/logout') }}"><i class="fa fa-times-circle nav-icon"></i> Güvenli Çıkış</a></li>
+              </ul>
+            </li>
+            <li><a href="{{ URL::to('Pv3/logout') }}"><i class="fa fa-times-circle"></i> Güvenli Çıkış</a></li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="leftmenu mCustomScrollbar" data-mcs-theme="inset">
+    <div class="input-group">    
+    <span class="input-group-addon search-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+    <input type="text" class="form-control search" name="search" placeholder="Ara" aria-describedby="basic-addon1">
+    </div>
+    <ul class="leftdrop nav navbar-nav">
+      <li><a href="{{ URL::to('Pv3/Dashboard') }}"><i class="fa fa-home fa-fw"></i>&nbsp; Anasayfa</a></li>
+
+
+
+
+
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag fa-fw"></i> Ürün Yönetimi <i class="fa fa-angle-down fa-right"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ URL::to('Pv3/category') }}"><i class="fa fa-angle-right"></i> Kategoriler</a></li>
+          <li><a href="{{ URL::to('Pv3/product') }}"><i class="fa fa-angle-right"></i> Ürünler</a></li>
+          <li><a href="{{ URL::to('Pv3/brand') }}"><i class="fa fa-angle-right"></i> Markalar</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-star fa-fw"></i> Tasarım Yönetimi <i class="fa fa-angle-down fa-right"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ URL::to('Pv3/design/color') }}"><i class="fa fa-angle-right"></i> Renkler</a></li>       
+          <li><a href="{{ URL::to('Pv3/design/logo') }}"><i class="fa fa-angle-right"></i> Logo</a></li>     
+          <li><a href="{{ URL::to('Pv3/design/favicon') }}"><i class="fa fa-angle-right"></i> Favicon</a></li>
+          <li><a href="{{ URL::to('Pv3/design/text') }}"><i class="fa fa-angle-right"></i> Metinler</a></li>
+          <li><a href="{{ URL::to('Pv3/design/footer') }}"><i class="fa fa-angle-right"></i> Footer</a></li>
+          <li><a href="{{ URL::to('Pv3/design/section') }}"><i class="fa fa-angle-right"></i> Blok Yerleşimi</a></li>
+        </ul>
+      </li>    
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-list-alt fa-fw"></i> Menü Yönetimi <i class="fa fa-angle-down fa-right"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ URL::to('Pv3/menu') }}"><i class="fa fa-angle-right"></i> Üst Menü Yönetimi</a></li>
+          <li><a href="{{ URL::to('Pv3/footer') }}"><i class="fa fa-angle-right"></i> Footer Yönetimi</a></li>
+        </ul>
+      </li>        
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-picture-o fa-fw"></i> Banner / Görseller <i class="fa fa-angle-down fa-right"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ URL::to('Pv3/banner') }}"><i class="fa fa-angle-right"></i> Banner (Anasayfa)</a></li>       
+          <li><a href="{{ URL::to('Pv3/banner-category') }}"><i class="fa fa-angle-right"></i> Banner (Kategoriler)</a></li>       
+        </ul>
+      </li>      
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file-text fa-fw"></i> Sayfa Yönetimi <i class="fa fa-angle-down fa-right"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ URL::to('Pv3/page') }}"><i class="fa fa-angle-right"></i> Sayfalar</a></li>       
+          <li><a href="{{ URL::to('Pv3/section') }}"><i class="fa fa-angle-right"></i> Sayfa Bölümleri</a></li>
+          <li><a href="{{ URL::to('Pv3/photo') }}"><i class="fa fa-angle-right"></i> Sayfa Resim Galeri</a></li>
+          <li><a href="{{ URL::to('Pv3/setting/contact') }}"><i class="fa fa-angle-right"></i> İletişim Sayfası</a></li>          
+        </ul>
+      </li>  
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i> Yönetici İşlemleri <i class="fa fa-angle-down fa-right"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ URL::to('Pv3/user') }}"><i class="fa fa-angle-right"></i> Yöneticiler</a></li>
+        </ul>
+      </li>   
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-fw"></i> Genel Ayarlar <i class="fa fa-angle-down fa-right"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ URL::to('Pv3/setting/general') }}"><i class="fa fa-angle-right"></i> Genel Tanımlamalar</a></li>        
+          <li><a href="{{ URL::to('Pv3/setting/text') }}"><i class="fa fa-angle-right"></i> Seo ve Başlıklar</a></li>
+          <li><a href="{{ URL::to('Pv3/setting/file') }}"><i class="fa fa-angle-right"></i> Dosya Yöneticisi</a></li>
+          <li><a href="{{ URL::to('Pv3/language') }}"><i class="fa fa-angle-right"></i> Dil Yönetimi</a></li>
+        </ul>
+      </li>
+    </ul>
+    </div>
+    <div class="col-md-12 page-margin" >
+    @yield('content')
+    </div>
+</div>
+</div>  
+
+    {{ HTML::script('panelv3/js/jquery-1.11.3.min.js') }}
+    {{ HTML::script('panelv3/js/bootstrap.min.js') }}    
+    {{ HTML::script('panelv3/js/jquery.scrolltop.min.js') }}  
+    {{ HTML::script('panelv3/js/jquery.scrollbar.min.js') }}
+    {{ HTML::script('panelv3/js/jquery.checkboxes.min.js') }}
+    {{ HTML::script('panelv3/js/jquery.mask.min.js') }}
+    {{ HTML::script('panelv3/js/jquery.money.min.js') }}  
+    @yield('body')
+    {{ HTML::script('panelv3/js/panel.min.js') }}
+
+</body>
+</html>

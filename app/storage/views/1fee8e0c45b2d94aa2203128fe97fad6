@@ -1,0 +1,72 @@
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.category.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">KATEGORİ LİSTESİ <span class="badge"><?php echo $categories->getTotal(); ?></span></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+    <?php if(isset($searchText) != ''): ?>
+      <span class="search-info"><i class="fa fa-search-plus"></i> "<?php echo $searchText; ?>" - Arama Sonuçları</span> <a href="<?php echo URL::to('Pv3/category'); ?>"><i class="fa fa-times-circle"></i></a>
+    <?php endif; ?>
+    <?php echo Form::open(['url'=>'Pv3/category/search','role'=>'form','class'=>'form-inline search-page','method'=>'get']); ?>
+
+
+      <select name="c" class="form-control">
+        <option value="0" selected="selected">Kategori Seçiniz</option>
+        <?php foreach($selects as $category): ?>      
+          <?php echo NodeList::getSelect($category); ?>
+
+        <?php endforeach; ?>
+      </select>
+
+      <span class="span-grey">ya da</span>
+
+      <div class="input-group">
+        <input type="text" name="q" placeholder="Kategori Adı" class="form-control" />
+          <div class="input-group-btn">
+            <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+          </div>
+      </div>
+    <?php echo Form::close(); ?>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Kategori Adı</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php foreach($categories as $category): ?>
+        <tr>
+          <th><?php echo $category->id_category; ?></th>
+          <td><?php echo $category->name; ?></td>
+          <td class="text-right">            
+          <div class="btn-group">
+          <a href="<?php echo URL::to('Pv3/category/edit/'.$category->id_category.''); ?>" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="caret"></span>
+          <span class="sr-only">Menü</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right">
+          <li class="delete"><a href="<?php echo URL::to('Pv3/category/delete/'.$category->id_category.''); ?>"><i class="fa fa-times"></i> Kategoriyi Sil</a></li>
+          </ul>
+          </div>
+          </td>
+        </tr> 
+      <?php endforeach; ?>      
+      </tbody>
+    </table>
+    <div class="pagination"> <?php echo $categories->appends(Request::only('q'))->links(); ?> </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

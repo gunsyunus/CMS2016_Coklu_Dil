@@ -1,0 +1,119 @@
+<?php $__env->startSection('title', ''.$settingsLanguage->contact_page_name.' - '.$settingsLanguage->title.''); ?>
+<?php $__env->startSection('keyword', ''.$settingsLanguage->contact_page_name.','.$settingsLanguage->keyword.''); ?>
+<?php $__env->startSection('description', ''.$settingsLanguage->contact_page_name.' - '.$settingsLanguage->description.''); ?>
+
+<?php $__env->startSection('meta'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('body'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+
+<?php echo $settingsLanguage->contact_map; ?>
+
+
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="inner">
+        <ul>
+          <li class="home"><a href="<?php echo URL::to($languageActive.'/'); ?>"><?php echo $settingsLanguage->home_name; ?></a><span>&mdash;›</span></li>          
+          <li class="category13"><strong><?php echo $settingsLanguage->contact_page_name; ?></strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="main-container col2-right-layout">
+  <div class="main container">
+    <div class="row">
+
+      <aside class="col-right sidebar col-sm-6">
+        <div class="page-title">
+          <h2> <?php echo $settingsLanguage->contact_title_left; ?></h2>
+        </div>
+        <br />
+        <div class="block">
+
+      <?php echo $settingsLanguage->contact_info; ?>
+
+
+        </div>
+      </aside>
+
+     <?php echo Form::open(['url'=>'gonder','role'=>'form','class'=>'form-horizontal']); ?>
+
+
+      <section class="col-main col-sm-6">
+        <div class="page-title">
+          <h2> <?php echo $settingsLanguage->contact_title_right; ?></h2>
+        </div>
+
+                <?php if(Session::has('CONFIRM')): ?>
+                 <div class="alert alert-success" role="alert"><?php echo Lang::get('content.form_success'); ?></div>
+                <?php endif; ?>
+
+                <?php if(Session::has('ERROR')): ?>                  
+                 <div class="alert alert-danger" role="alert"><?php echo Lang::get('content.form_error'); ?></div>
+                <?php endif; ?>  
+
+        <div class="static-contain">
+          <fieldset class="group-select">
+            <ul>
+              <li id="billing-new-address-form">
+                <fieldset>
+                  <legend><?php echo $settingsLanguage->contact_page_name; ?></legend>
+                  <ul>
+                    <li>
+                      <div class="customer-name">
+                        <div class="input-box name-firstname">
+                          <label for="name"><b><?php echo Lang::get('content.form_name'); ?></b> <span class="required">*</span></label>
+                          <br>
+                          <input type="text" id="name" name="name" title="" class="input-text ">
+                        </div>
+
+                      <div class="input-box">
+                        <label for="phone"><b><?php echo Lang::get('content.form_phone'); ?></b> <span class="required">*</span></label>
+                        <br>
+                        <input type="text" name="phone" id="phone" title="" class="input-text">
+                      </div>                        
+
+                      </div>
+                    </li>
+                    <li>
+                        <div class="input-box name-lastname">
+                          <label for="email"><b><?php echo Lang::get('content.form_email'); ?></b></label>
+                          <br>
+                          <input type="text" id="email" name="email" title="" class="input-text">
+                        </div>
+                    </li>
+                    <li class="">
+                      <label for="message"><b><?php echo Lang::get('content.form_message'); ?></b></label>
+                      <br>
+                      <div style="float:none" class="">
+                        <textarea name="message" id="message" title="" class="input-text" cols="5" rows="3"></textarea>
+                      </div>
+                    </li>
+                  </ul>
+                </fieldset>
+              </li>
+              <div class="buttons-set">
+                <button type="submit" title="<?php echo Lang::get('content.form_send'); ?>" class="button submit"> <span> <?php echo Lang::get('content.form_send'); ?> </span> </button>
+              </div>
+            </ul>
+          </fieldset>
+        </div>
+      </section>
+
+      <?php echo Form::close(); ?>
+
+
+    </div>
+  </div>
+</section>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

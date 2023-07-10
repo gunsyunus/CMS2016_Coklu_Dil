@@ -1,0 +1,108 @@
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.design.menu',array('page'=>'Footer'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">FOOTER ALANINI DÜZENLE</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+
+    <?php echo Form::open(['url'=>'Pv3/design/footersave/','role'=>'form','class'=>'form-horizontal','files'=>'true']); ?>
+
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#logo" aria-controls="logo" role="tab" data-toggle="tab">Logo ve Slogan</a></li>
+        <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Hızlı İletişim</a></li>
+    </ul>
+
+    <br />
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="logo">
+
+        <!-- 1 -->
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">
+        <?php echo Form::label('footer_logo', 'Footer Logo', array('class'=>'control-label')); ?>     
+        <?php echo Tooltip::standard('230 x 104 ölçülerinde ve JPG,PNG,GIF olmalıdır.'); ?>    
+        </div>
+        <div class="col-md-10">
+        <img src="<?php echo URL::to($designs->footer_logo); ?>" class="banner img-thumbnail img-responsive" />
+        <?php echo Form::file('footer_logo'); ?>
+
+        </div>
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('footer_slogan', 'Footer Slogan', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('footer_slogan',$designs->footer_slogan,['class'=>'form-control']); ?>       
+        </div>
+        </div>                     
+
+        <!-- 1 -->
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="contact">
+            
+        <!-- 2 -->
+
+        <div class="form-group">
+        <?php echo Form::label('home_title_1', 'Sütun Başlığı', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('home_title_1',$designs->home_title_1,['class'=>'form-control']); ?>       
+        </div>
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('footer_contact_1', 'Adres', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('footer_contact_1',$designs->footer_contact_1,['class'=>'form-control']); ?>       
+        </div>
+        </div>    
+
+        <div class="form-group">
+        <?php echo Form::label('footer_contact_2', 'Telefon', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('footer_contact_2',$designs->footer_contact_2,['class'=>'form-control']); ?>       
+        </div>
+        </div>  
+
+        <div class="form-group">
+        <?php echo Form::label('footer_contact_3', 'İletişim', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('footer_contact_3',$designs->footer_contact_3,['class'=>'form-control']); ?>       
+        </div>
+        </div>                    
+
+        <!-- 2 -->      
+
+        </div>
+
+    </div>
+          
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> KAYDET</button>
+        </div>
+        </div>
+        
+        <?php echo Form::close(); ?>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

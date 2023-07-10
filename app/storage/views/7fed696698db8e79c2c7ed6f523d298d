@@ -1,0 +1,78 @@
+
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.user.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">YÖNETİCİYİ DÜZENLE</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+        
+        <?php echo Form::open(['url'=>'Pv3/user/save/'.$users->id_user.'','role'=>'form','class'=>'form-horizontal']); ?>
+
+
+        <div class="form-group">
+        <?php echo Form::label('name', 'Adı', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('name',$users->name,['class'=>'form-control']); ?>       
+        </div>
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('surname', 'Soyad', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('surname',$users->surname,['class'=>'form-control']); ?>       
+        </div>
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('created_at', 'Kayıt Tarihi', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo $users->created_at->format('d.m.Y H:i'); ?>
+
+        </div>
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('updated_at', 'Güncelleme Tarihi', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo $users->updated_at->format('d.m.Y H:i'); ?>
+
+        </div>
+        </div>                
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">
+        <?php echo Form::label('email', 'E-Posta', array('class'=>'control-label'));; ?>
+
+        <?php echo Tooltip::standard('Sisteme giriş ve bilgilendirme mailleri için kullanılır.'); ?>    
+        </div>
+        <div class="col-md-10">
+        <?php echo Form::text('email',$users->email,['class'=>'form-control']); ?>       
+        </div>
+        </div>        
+
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> KAYDET</button>
+        </div>
+        </div>
+        
+        <?php echo Form::close(); ?>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>404 - Sayfa Bulunamadı</title>
+<meta name="googlebot" content="noindex, nofollow" />
+<meta name="robots" content="noindex, nofollow" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,300,700,800,400,600" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body { font-family: 'Open Sans', sans-serif; font-weight: normal; font-size:15px; }
+-->
+</style>
+	<?php echo $settings->tracing_head_code; ?>
+
+</head>
+<body>
+	
+	<?php echo $settings->tracing_body_after_code; ?>
+
+
+	<div style="text-align:center; margin:225px;">	
+	<h1 style="color:#606060;">404 - SAYFA BULUNAMADI !</h1>
+	<h2>Aradığınız link sitemizde mevcut değil veya <br>yayından kaldırılmış olabilir.</h2>
+	<a href="<?php echo URL::to('/'); ?>" style="color:#808080;">ANASAYFAYA DÖN</a>
+	</div>
+
+	<?php echo $settings->tracing_body_before_code; ?>
+
+
+	<?php echo Lang::get('content.product_detail'); ?>
+
+
+</body>
+</html>

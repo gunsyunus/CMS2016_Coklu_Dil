@@ -1,0 +1,163 @@
+
+
+<?php $__env->startSection('title', ''.$product->name.' '.$product->title.''); ?>
+<?php $__env->startSection('keyword', ''.$product->name.','.$product->keyword.''); ?>
+<?php $__env->startSection('description', ''.$product->name.' - '.$product->description.''); ?>
+
+<?php $__env->startSection('meta'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('body'); ?>
+<script type="text/javascript" src="<?php echo URL::to('assets/js/cloud-zoom.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo URL::to('assets/js/product.js'); ?>"></script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="inner">
+        <ul>
+          <li class="home"> <a href="<?php echo URL::to($languageActive.'/'); ?>"><?php echo $settingsLanguage->home_name; ?></a><span>&mdash;›</span></li>
+          <li class=""><a href="<?php echo URL::to('urunler'); ?>"><?php echo $designsLanguage->product_title_text; ?></a><span>&mdash;&rsaquo;</span></li>
+          <li class="category13"><strong><?php echo $product->name; ?></strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="main-container col1-layout">
+  <div class="main container">
+    <div class="col-main">
+      <div class="row">
+        <div class="product-view">
+          <div class="product-essential">
+              <div class="product-img-box col-sm-4 col-xs-12">
+                <?php if(!empty($product->promotion_text)): ?> <div class="new-label new-top-left"><?php echo $product->promotion_text; ?></div> <?php endif; ?>
+                <div class="product-image" style="top:0px;z-index:700;position:relative;">
+
+                <ul class="cloud_zoom" id="galleryproduct">        
+             
+                <li class="zoom_img">
+                <img src="<?php echo URL::to($product->image_big_1); ?>" class="zoom_img_image" />
+                <img src="<?php echo URL::to($product->image_small_1); ?>" class="zoom_source_image" />
+                </li> 
+
+                <?php foreach($galleries as $gallery): ?>
+                <li class="zoom_img" id="g<?php echo $gallery->id_gallery; ?>">
+                <img src="<?php echo URL::to($gallery->image_big); ?>" class="zoom_img_image" />
+                <img src="<?php echo URL::to($gallery->image_small); ?>" class="zoom_source_image" />
+                </li>                
+                <?php endforeach; ?>
+
+                <div class="zoom-control"> <a href="javascript:void(0)" class="zoom-prev" style="right: 10.5px;">Geri</a> <a href="javascript:void(0)" class="zoom-next" style="right: 69.5px;">İleri</a></div>
+                </ul>
+
+                </div>       
+                <div class="clear"></div>
+              </div>
+              <div class="product-shop col-sm-5 col-xs-12">
+                <div class="product-next-prev">
+      
+                <?php if(empty($nextProduct->sef_url)): ?>
+                <span class="product-next" style="color:#d8d8d8;"></span> 
+                <?php else: ?>
+                <a class="product-next" href="<?php echo Sef::productlang($nextProduct->sef_url,$nextProduct->id_product,$languageActive); ?>"><span></span></a> 
+                <?php endif; ?>
+
+
+                <?php if(empty($prevProduct->sef_url)): ?>
+                <span class="product-prev" style="color:#d8d8d8;"></span> 
+                <?php else: ?>
+                <a class="product-prev" href="<?php echo Sef::productlang($prevProduct->sef_url,$prevProduct->id_product,$languageActive); ?>"><span></span></a> 
+                <?php endif; ?>
+
+                </div>
+                <div class="product-name">
+                  <h1><?php echo $product->name; ?></h1>
+                </div><br>
+                <div class="price-block">
+                  <div class="price-box">
+                    <p class="special-price"><span id="product-price-48" class="price"><?php echo $product->bname; ?></span> </p>
+                  </div>
+                </div>
+                <div class="short-description">
+                  <br /><p><?php echo $product->short_content; ?> </p>
+                </div>                
+                <?php echo Form::close(); ?>
+
+              </div>
+              <div class="product-img-box col-sm-3 col-xs-12">
+                <div class="product-additional">
+                  <div class="block block-product-additional">
+                    <div class="block-title"><strong><span><?php echo $designsLanguage->product_advert_title; ?></span></strong></div>
+                    <div class="block-content"><?php echo $designsLanguage->product_advert_content; ?></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="product-collateral">
+          <div class="col-sm-12">
+            <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
+              <li class="active"><a href="#product_tabs_description" data-toggle="tab"><?php echo Lang::get('content.product_detail'); ?> </a></li>
+            </ul>
+            <div id="productTabContent" class="tab-content">
+              <div class="tab-pane fade in active" id="product_tabs_description">
+                <div class="std">
+                  <p><?php echo $product->content; ?> </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Slider -->
+<?php if($designs->similar_product_section == 1): ?>
+<section class="slider-items-products">
+  <div class="container">
+    <div class="slider-items-products">
+      <div class="new_title center">
+        <h2><?php echo $designsLanguage->similar_product_title; ?></h2>
+      </div>
+      <div id="related-products-slider" class="product-flexslider hidden-buttons">
+        <div class="slider-items slider-width-col4">          
+          <?php foreach($similarProducts as $product): ?>
+          <div class="item">
+            <div class="col-item">
+              <div class="product-wrapper">
+                <div class="thumb-wrapper"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="thumb flip"><span class="face"><img src="<?php echo URL::to($product->image_small_1); ?>" alt="" width="170"></span><span class="quick-view" data-product_id="34"><span><?php echo $product->name; ?></span></span></a></div>
+                <div class="actions"><span class="add-to-links"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="link-compare" title=""><span></span></a></span></div>
+              </div>
+              <div class="item-info">
+                <div class="info-inner">
+                    <div class="item-title"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" title=""><?php echo $product->name; ?></a></div>
+                  <div class="item-content">
+                    <div class="item-price">
+                      <div class="price-box">
+                        <span class="regular-price"><span class="price"><?php echo $product->bname; ?></span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <?php endforeach; ?> 
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
+<?php endif; ?>
+<!-- End Product Slider -->
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

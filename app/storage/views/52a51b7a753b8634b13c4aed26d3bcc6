@@ -1,0 +1,19 @@
+<?php $__env->startSection('title', 'Hata'); ?>
+<?php $__env->startSection('keyword', 'Hata'); ?>
+<?php $__env->startSection('description', 'Hata'); ?>
+
+<?php $__env->startSection('meta'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('body'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	
+	<div style="text-align:center; margin:100px;">
+	<h1 style="color:red;">HATA !</h1>
+	<h2>Lütfen sistem yöneticisi ile görüşün !</h2>
+	</div>
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

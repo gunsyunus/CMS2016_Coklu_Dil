@@ -1,0 +1,98 @@
+
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.language.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">DİLİ DÜZENLE</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+        
+        <?php echo Form::open(['url'=>'Pv3/language/save/'.$languages->id_language.'','role'=>'form','class'=>'form-horizontal','files'=>'true']); ?>
+
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">     
+        <?php echo Form::label('image', 'Resim Seçiniz', array('class'=>'control-label')); ?>     
+        <?php echo Tooltip::standard('20 x 14 ölçülerinde ve JPG,PNG,GIF olmalıdır.'); ?>    
+        </div>
+        <div class="col-md-10">     
+        <img src="<?php echo URL::to($languages->image_flag); ?>" class="language img-thumbnail img-responsive" />
+        <?php echo Form::file('image');; ?>
+
+        </div>
+        </div>        
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">    
+        <?php echo Form::label('name', 'Dil Adı', array('class'=>'control-label')); ?>
+
+        <?php echo Tooltip::standard('Örnek : Türkçe, English'); ?>    
+        </div>
+        <div class="col-md-10">
+        <?php echo Form::text('name',$languages->name,['class'=>'form-control']); ?>
+
+        </div>
+        </div>
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">    
+        <?php echo Form::label('language_code', 'Dil Kodu', array('class'=>'control-label')); ?>
+
+        <?php echo Tooltip::standard('Örnek : tr, en, de'); ?>    
+        </div>
+        <div class="col-md-10">
+        <?php echo Form::text('language_code',$languages->language_code,['class'=>'form-control']); ?>
+
+        </div>
+        </div>   
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">    
+        <?php echo Form::label('country_code', 'Ülke Kodu', array('class'=>'control-label')); ?>
+
+        <?php echo Tooltip::standard('Örnek : tr-TR, en-US'); ?>    
+        </div>
+        <div class="col-md-10">
+        <?php echo Form::text('country_code',$languages->country_code,['class'=>'form-control']); ?>
+
+        </div>
+        </div>  
+
+        <div class="form-group">
+        <?php echo Form::label('status', 'Dil Durumu', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::checkbox('status', '1', $languages->status, array('class'=>'checkboxes'));; ?>
+
+        </div>
+        </div>    
+
+        <div class="form-group">
+        <?php echo Form::label('sort', 'Bayrak Sıralama', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('sort',$languages->sort,['class'=>'form-control']); ?>       
+        </div>
+        </div>           
+
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> KAYDET</button>
+        </div>
+        </div>
+        
+        <?php echo Form::close(); ?>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

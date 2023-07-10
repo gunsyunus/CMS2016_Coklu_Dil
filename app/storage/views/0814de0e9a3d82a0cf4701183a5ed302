@@ -1,0 +1,138 @@
+
+
+<?php $__env->startSection('title', ''.$page->title.' - '.$settingsLanguage->title.''); ?>
+<?php $__env->startSection('keyword', ''.$page->keyword.''); ?>
+<?php $__env->startSection('description', ''.$page->description.''); ?>
+
+<?php $__env->startSection('meta'); ?>
+<link rel="stylesheet" type="text/css" href="<?php echo URL::to('assets/css/magnific-popup.css'); ?>" />
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('body'); ?>
+<script type="text/javascript" src="<?php echo URL::to('assets/js/jquery.magnific-popup.min.js'); ?>"></script> 
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.popup-gallery').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		tLoading: 'Lütfen bekleyiniz #%curr%...',
+		mainClass: 'mfp-img-mobile',
+		tClose: 'Kapat',
+		tLoading: 'Yükleniyor...',		
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			tPrev: 'Geri',
+			tNext: 'İleri',
+			tCounter: '%curr% - %total%',
+			preload: [0,1]
+		},
+		image: {
+			tError: '<a href="%url%">Resim #%curr%</a> yüklenemedi !',
+			titleSrc: function(item) {
+				return item.el.attr('title');
+			}
+		}
+	});
+});
+</script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<!-- Container -->
+
+<?php if($page->section_id == 0): ?>
+
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <ul>
+        <li class="home"> <a href="<?php echo URL::to($languageActive.'/'); ?>"><?php echo $settingsLanguage->home_name; ?></a><span>&mdash;›</span></li>
+        <li class="category13"><strong><?php echo $page->title; ?></strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<section class="main-container col2-right-layout">
+  <div class="main container">
+    <div class="row">
+      <section class="col-main col-sm-12">
+        <div class="page-title">
+          <h2><?php echo $page->title; ?></h2>
+        </div>
+        <div class="static-contain">
+        <?php echo $page->content; ?>  
+
+			<?php if($page->gallery_id != 0): ?>
+				<div class="popup-gallery">
+		    	<?php foreach($galleries as $gallery): ?>
+					<a href="<?php echo URL::to($gallery->image_big); ?>" title="<?php echo $page->title; ?>"><img src="<?php echo URL::to($gallery->image_small); ?>" height="125" width="200" border="0" alt="<?php echo $page->title; ?>" class="img-thumbnail img-margin img-responsive" /></a>					
+	    		<?php endforeach; ?>
+	    		</div>
+	    	<?php endif; ?>
+
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<?php else: ?>
+
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <ul>
+        <li class="home"> <a href="<?php echo URL::to('/'); ?>"><?php echo $settingsLanguage->home_name; ?></a><span>&mdash;›</span></li>
+        <li class="home"><?php echo $section->name; ?><span>&mdash;›</span></li>
+        <li class="category13"><strong><?php echo $page->title; ?></strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<section class="main-container col2-right-layout">
+  <div class="main container">
+    <div class="row">
+      <section class="col-main col-sm-9">
+        <div class="page-title">
+          <h2><?php echo $page->title; ?></h2>
+        </div>
+        <div class="static-contain">
+        <?php echo $page->content; ?>  
+
+			<?php if($page->gallery_id != 0): ?>
+				<div class="popup-gallery">
+		    	<?php foreach($galleries as $gallery): ?>
+					<a href="<?php echo URL::to($gallery->image_big); ?>" title="<?php echo $page->title; ?>"><img src="<?php echo URL::to($gallery->image_small); ?>" border="0" alt="<?php echo $page->title; ?>" class="img-thumbnail img-margin img-responsive" /></a>					
+	    		<?php endforeach; ?>
+	    		</div>
+	    	<?php endif; ?>
+	    	        
+        </div>
+      </section>
+      <aside class="col-right sidebar col-sm-3">
+        <div class="block block-company">
+          <div class="block-title"><?php echo $section->name; ?></div>
+          <div class="block-content">
+            <ol id="recently-viewed-items">
+              <?php foreach($pageList as $list): ?>
+                <li class="item even"><a href="<?php echo Sef::pagelang($list->sef_url,$languageActive); ?>"><?php echo $list->title; ?></a></li>
+              <?php endforeach; ?>
+              </ol>
+            <br />
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<?php endif; ?>
+
+<!-- Container --> 
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

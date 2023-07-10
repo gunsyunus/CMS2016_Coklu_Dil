@@ -1,0 +1,115 @@
+
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.setting.menu',array('page'=>'Seo ve Başlıklar'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">SEO ve BAŞLIKLAR</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+
+    <?php echo Form::open(['url'=>'Pv3/setting/textsave/','role'=>'form','class'=>'form-horizontal']); ?>
+
+
+        <ul class="nav nav-tabs col-md-offset-2" role="tablist">
+        <?php foreach($languages as $language): ?>
+            <li role="presentation" <?php if($language->language_id=='1'): ?> class="active" <?php endif; ?>><a href="#language<?php echo $language->language_id; ?>" aria-controls="language<?php echo $language->language_id; ?>" role="tab" data-toggle="tab"><img src="<?php echo URL::to($language->language->image_flag); ?>" class="language img-thumbnail img-responsive" /></a></li>
+        <?php endforeach; ?>
+        </ul>
+
+        <br />
+
+        <div class="tab-content">
+        <?php foreach($languages as $language): ?>
+            <div role="tabpanel" class="tab-pane <?php if($language->language_id=='1'): ?> active <?php endif; ?>" id="language<?php echo $language->language_id; ?>">       
+
+            <div class="form-group">
+            <div class="col-md-2 text-right">     
+            <?php echo Form::label('home_name', 'Anasayfa Başlığı', array('class'=>'control-label')); ?>     
+            <?php echo Tooltip::standard('Anasayfa,Home vb. kelimeler ya da sitenin kısa adı olabilir.'); ?>    
+            </div>
+            <div class="col-md-10">
+            <?php echo Form::text('languageField['.$language->language_id.'][home_name]',$language->home_name,['class'=>'form-control']); ?>       
+            </div>
+            </div>   
+
+            <div class="form-group">
+            <div class="col-md-2 text-right">     
+            <?php echo Form::label('search_name', 'Arama Kutusu ve Başlık', array('class'=>'control-label')); ?>     
+            <?php echo Tooltip::standard('Ara, Arama, Ne Aramıştınız ? vb. olabilir.'); ?>    
+            </div>
+            <div class="col-md-10">
+            <?php echo Form::text('languageField['.$language->language_id.'][search_name]',$language->search_name,['class'=>'form-control']); ?>       
+            </div>
+            </div>               
+
+            <div class="form-group">
+            <div class="col-md-2 text-right">     
+            <?php echo Form::label('title', 'Site Başlığı', array('class'=>'control-label')); ?>     
+            <?php echo Tooltip::standard('Minimum 3 ve maksimum 70 karakter olmalıdır.'); ?>    
+            </div>
+            <div class="col-md-10">
+            <?php echo Form::text('languageField['.$language->language_id.'][title]',$language->title,['class'=>'form-control']); ?>       
+            </div>
+            </div>            
+
+            <div class="form-group">
+            <div class="col-md-2 text-right">     
+            <?php echo Form::label('keyword', 'Anahtar Kelimeler', array('class'=>'control-label')); ?>     
+            <?php echo Tooltip::standard('Maksimum 260 karakter olmalıdır.'); ?>    
+            </div>
+            <div class="col-md-10">
+            <?php echo Form::text('languageField['.$language->language_id.'][keyword]',$language->keyword,['class'=>'form-control']); ?>       
+            </div>
+            </div>        
+
+            <div class="form-group">
+            <div class="col-md-2 text-right">     
+            <?php echo Form::label('description', 'Description (Açıklama)', array('class'=>'control-label')); ?>     
+            <?php echo Tooltip::standard('Maksimum 160 karakter olmalıdır.'); ?>    
+            </div>
+            <div class="col-md-10">
+            <?php echo Form::text('languageField['.$language->language_id.'][description]',$language->description,['class'=>'form-control']); ?>       
+            </div>
+            </div>  
+
+            <div class="form-group">
+            <?php echo Form::label('copyright', 'Telif Hakkı Metin', array('class'=>'col-md-2 control-label'));; ?>
+
+            <div class="col-md-10">
+            <?php echo Form::text('languageField['.$language->language_id.'][copyright]',$language->copyright,['class'=>'form-control']); ?>       
+            </div>
+            </div>        
+
+            <div class="form-group">
+            <?php echo Form::label('welcome_msg', 'Site Slogan', array('class'=>'col-md-2 control-label'));; ?>
+
+            <div class="col-md-10">
+            <?php echo Form::text('languageField['.$language->language_id.'][welcome_msg]',$language->welcome_msg,['class'=>'form-control']); ?>       
+            </div>
+            </div> 
+
+            </div>                  
+        <?php endforeach; ?>  
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> KAYDET</button>
+        </div>
+        </div>
+        
+        <?php echo Form::close(); ?>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

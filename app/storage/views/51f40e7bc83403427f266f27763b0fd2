@@ -1,0 +1,377 @@
+
+
+<?php $__env->startSection('title', ''.$settingsLanguage->title.''); ?>
+<?php $__env->startSection('keyword', ''.$settingsLanguage->keyword.''); ?>
+<?php $__env->startSection('description', ''.$settingsLanguage->description.''); ?>
+
+<?php $__env->startSection('meta'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('body'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<!-- Slider -->
+<section class="slider-intro">
+  <div class="the-slideshow slideshow-wrapper">
+    <ul class="slideshow">
+      <?php foreach($bannerSlider as $banner): ?>
+      <li class="slide">
+        <p><a href="<?php echo $banner->url; ?>"> <img src="<?php echo $banner->image; ?>" alt="<?php echo $banner->title; ?>"> </a></p>
+        <div class="caption light top-center">
+          <div class="caption-inner">
+          </div>
+        </div>
+      </li>        
+      <?php endforeach; ?>
+    </ul>
+    <a href="#" id="home-slides-prev" class="backward browse-button"></a> <a href="#" id="home-slides-next" class="forward browse-button"></a>
+    <div id="home-slides-pager" class="tab-pager tab-pager-img tab-pager-ring-lgray"></div>
+  </div>
+</section>
+<!-- Slider --> 
+
+<!-- Text -->
+<?php if($designs->text_section == 1): ?>
+<div class="service-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-3">
+        <div class="services first">
+          <h6><?php echo $designsLanguage->home_text_1; ?></h6>
+          <span><?php echo $designsLanguage->home_text_2; ?></span> </div>
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <div class="services">
+          <h6><?php echo $designsLanguage->home_text_3; ?></h6>
+          <span><?php echo $designsLanguage->home_text_4; ?></span> </div>
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <div class="services">
+          <h6><?php echo $designsLanguage->home_text_5; ?></h6>
+          <span><?php echo $designsLanguage->home_text_6; ?></span> </div>
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <div class="services last">
+          <h6><?php echo $designsLanguage->home_text_7; ?></h6>
+          <span><?php echo $designsLanguage->home_text_8; ?></span> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php endif; ?>
+<!-- Text -->
+
+<!-- Sub Banner -->
+<?php if($designs->home_section_1 == 1): ?>
+<div class="offer-banner-section">
+  <div class="container">
+    <div class="row">
+      <?php foreach($bannerBox as $banner): ?>
+      <div class="col-lg-3 col-sm-3 col-xs-6">
+        <div class="col"><a href="<?php echo $banner->url; ?>"><img src="<?php echo $banner->image; ?>" alt="<?php echo $banner->title; ?>"></a></div>
+      </div>
+      <?php endforeach; ?>    
+    </div>
+  </div>
+</div>
+<?php endif; ?>
+<!-- End Sub Banner -->
+
+<!-- Tab Container -->
+<?php if($designs->home_section_2 == 1): ?>
+<div class="main-col">
+  <div class="container">
+    <div class="row">
+      <div class="product-grid-view">
+        <div class="col-md-12">
+          <div class="std">
+            <div class="home-tabs">
+              <div class="producttabs">
+                <div id="magik_producttabs1" class="magik-producttabs"> 
+                  <div class="magik-pdt-container"> 
+                    <!-- Tab Nav -->
+                    <div class="magik-pdt-nav">
+                      <ul class="pdt-nav">
+                        <li class="item-nav tab-loaded tab-nav-actived" data-type="order" data-catid="" data-orderby="best_sales" data-href="pdt_best_sales"> <span class="title-navi"><?php echo $designsLanguage->home_tab_text_1; ?></span> </li>
+                        <li class="item-nav" data-type="order" data-catid="" data-orderby="new_arrivals" data-href="pdt_new_arrivals"> <span class="title-navi"><?php echo $designsLanguage->home_tab_text_2; ?></span> </li>
+                      </ul>
+                    </div>
+                    <!-- End Tab Nav --> 
+                    <!--Begin Tab Content -->
+                    <div class="magik-pdt-content wide-4">
+                      <div class="pdt-content is-loaded pdt_best_sales tab-content-actived">
+                        <ul class="pdt-list products-grid zoomOut play">
+              <?php foreach($tabLeftUpProducts as $product): ?>
+              <li class="item item-animate wide-tab">
+                <div class="item-inner">
+                  <div class="product-wrapper">
+                    <div class="thumb-wrapper">                    
+                      <?php if(!empty($product->promotion_text)): ?> <div class="new-label new-top-left"><?php echo $product->promotion_text; ?></div> <?php endif; ?>
+                    <div class="thumb-wrapper"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="thumb"><span class="face"><img src="<?php echo URL::to($product->image_small_1); ?>" alt="" width="250"></span><span class="quick-view" data-product_id="34"><span><?php echo $product->name; ?></span></span></a></div>
+                    <div class="actions"><span class="add-to-links"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="link-compare" title=""><span></span></a></span></div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" title=""><?php echo $product->name; ?></a></div>
+                      <div class="item-content">
+                        <div class="item-price">
+                          <div class="price-box">
+                            <span class="regular-price"><span class="price"><?php echo $product->bname; ?></span></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <?php endforeach; ?>                         
+                        </ul>
+                      </div>
+                      <div class="pdt-content pdt_new_arrivals is-loaded">
+                        <ul class="pdt-list products-grid zoomOut play">
+              <?php foreach($tabRightUpProducts as $product): ?>
+              <li class="item item-animate wide-tab">
+                <div class="item-inner">
+                  <div class="product-wrapper">
+                    <div class="thumb-wrapper">                    
+                      <?php if(!empty($product->promotion_text)): ?> <div class="new-label new-top-left"><?php echo $product->promotion_text; ?></div> <?php endif; ?>                      
+                    <div class="thumb-wrapper"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="thumb"><span class="face"><img src="<?php echo URL::to($product->image_small_1); ?>" alt="" width="250"></span><span class="quick-view" data-product_id="34"><span><?php echo $product->name; ?></span></span></a></div>
+                    <div class="actions"><span class="add-to-links"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="link-compare" title=""><span></span></a></span></div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" title=""><?php echo $product->name; ?></a></div>
+                      <div class="item-content">
+                        <div class="item-price">
+                          <div class="price-box">
+                            <span class="regular-price"><span class="price"><?php echo $product->bname; ?></span></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <?php endforeach; ?>                         
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Tab Container -->
+<?php endif; ?>
+
+<!-- Middle slider -->
+<?php if($designs->home_section_3 == 1): ?>
+<section class="small-product-slider">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="bag-product-slider small-pr-slider">
+          <div class="slider-items-products">
+            <div class="new_title center">
+              <h2><?php echo $designsLanguage->home_tab_text_3; ?></h2>
+            </div>
+            <div id="bag-seller-slider" class="product-flexslider hidden-buttons">
+              <div class="slider-items slider-width-col3">                
+              <?php foreach($tabLeftDownProducts as $product): ?>
+                <div class="item">
+                  <div class="col-item">
+                    <?php if(!empty($product->promotion_text)): ?> <div class="new-label new-top-left"><?php echo $product->promotion_text; ?></div> <?php endif; ?>
+                    
+                    <div class="item-inner">
+                      <div class="product-wrapper">
+                        <div class="thumb-wrapper"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="thumb flip"><span class="face"><img src="<?php echo URL::to($product->image_small_1); ?>" alt="" width="268"></span><span class="quick-view" data-product_id="34"><span><?php echo $product->name; ?></span></span></a></div>
+                        <div class="actions"><span class="add-to-links"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="link-compare" title=""><span></span></a></span></div>
+                      </div>
+                      <div class="item-info">
+                        <div class="info-inner">
+                        <div class="item-title"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" title=""><?php echo $product->name; ?></a></div>
+                          <div class="item-content">
+                            <div class="item-price">
+                              <div class="price-box"> <span class="regular-price"><span class="price"><?php echo $product->bname; ?></span></span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="shoes-product-slider small-pr-slider">
+          <div class="slider-items-products">
+            <div class="new_title center">
+              <h2><?php echo $designsLanguage->home_tab_text_4; ?></h2>
+            </div>
+            <div id="bag-seller-slider1" class="product-flexslider hidden-buttons">
+              <div class="slider-items slider-width-col3">                
+              <?php foreach($tabRightDownProducts as $product): ?>
+                <div class="item">
+                  <div class="col-item">
+                    <?php if(!empty($product->promotion_text)): ?> <div class="new-label new-top-left"><?php echo $product->promotion_text; ?></div> <?php endif; ?>
+                    
+                    <div class="item-inner">
+                      <div class="product-wrapper">
+                        <div class="thumb-wrapper"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="thumb flip"><span class="face"><img src="<?php echo URL::to($product->image_small_1); ?>" alt="" width="268"></span><span class="quick-view" data-product_id="34"><span><?php echo $product->name; ?></span></span></a></div>
+                        <div class="actions"><span class="add-to-links"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="link-compare" title=""><span></span></a></span></div>
+                      </div>
+                      <div class="item-info">
+                        <div class="info-inner">
+                        <div class="item-title"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" title=""><?php echo $product->name; ?></a></div>
+                          <div class="item-content">
+                            <div class="item-price">
+                              <div class="price-box"> <span class="regular-price"><span class="price"><?php echo $product->bname; ?></span></span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
+<!-- End middle slider --> 
+
+<!-- Promo Banner --> 
+<?php if($designs->home_section_7 == 1): ?>
+<div class="promo-banner-section">
+  <div class="container">
+    <div class="row">
+      <div class="col"><a href="<?php echo $designsLanguage->advert_link; ?>"><img src="<?php echo $designs->advert_image; ?>" alt=""></a></div>
+    </div>
+  </div>
+</div>
+<?php endif; ?>
+<!-- End Promo Banner --> 
+
+<!-- Slider -->
+<?php if($designs->home_section_4 == 1): ?>
+<section class="best-seller-pro">
+  <div class="container">
+    <div class="slider-items-products">
+      <div class="new_title center">
+        <h2><?php echo $designsLanguage->home_tab_text_5; ?></h2>
+      </div>
+      <div id="best-seller-slider" class="product-flexslider hidden-buttons">
+        <div class="slider-items slider-width-col6">          
+          <?php foreach($bandProducts as $product): ?>
+          <div class="item">
+            <div class="col-item">
+                <?php if(!empty($product->promotion_text)): ?> <div class="new-label new-top-left"><?php echo $product->promotion_text; ?></div> <?php endif; ?>                
+              <div class="item-inner">
+                <div class="product-wrapper">
+                  <div class="thumb-wrapper"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="thumb flip"><span class="face"><img src="<?php echo URL::to($product->image_small_1); ?>" alt="" width="268"></span><span class="quick-view" data-product_id="34"><span><?php echo $product->name; ?></span></span></a></div>
+                    <div class="actions"><span class="add-to-links"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" class="link-compare" title=""><span></span></a></span></div>
+                </div>
+                <div class="item-info">
+                  <div class="info-inner">
+                      <div class="item-title"><a href="<?php echo Sef::productlang($product->sef_url,$product->id_product,$languageActive); ?>" title=""><?php echo $product->name; ?></a></div>
+                    <div class="item-content">
+                      <div class="item-price">
+                        <div class="price-box"><span class="regular-price"> <span class="price"><?php echo $product->bname; ?></span> </span> </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php endforeach; ?>        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
+<!-- End Slider -->
+
+<!-- Banner Box -->
+<?php if($designs->home_section_5 == 1): ?>
+<section class="latest-blog">
+  <div class="container">
+    <div class="row">
+      <div class="blog-title">
+        <h2><span><?php echo $designsLanguage->home_tab_text_6; ?></span></h2>
+      </div>
+      <?php foreach($bannerSub as $banner): ?>
+      <div class="col-xs-12 col-sm-3">
+        <div class="blog_inner">
+          <div class="blog-img"><img src="<?php echo $banner->image; ?>">
+            <div class="mask"> <a class="info" href="<?php echo $banner->url; ?>"><?php echo $banner->text; ?></a> </div>
+          </div>
+          <h2><a href="<?php echo $banner->url; ?>"><?php echo $banner->title; ?></a> </h2>
+        </div>
+      </div>
+      <?php endforeach; ?>       
+    </div>
+  </div>
+</section>
+<?php endif; ?>
+<!-- End Banner Box -->
+
+<!-- Feature Box -->
+<div class="our-features-box">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-xs-12 col-sm-4">
+        <div class="feature-box">
+          <div class="content"><?php echo $designsLanguage->home_text_9; ?><span><?php echo $designsLanguage->home_text_10; ?></span> </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-12 col-sm-4">
+        <div class="feature-box">
+          <div class="content"><?php echo $designsLanguage->home_text_11; ?><span><?php echo $designsLanguage->home_text_12; ?></span> </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-12 col-sm-4">
+        <div class="feature-box">
+          <div class="content"><?php echo $designsLanguage->home_text_13; ?><span><?php echo $designsLanguage->home_text_14; ?></span> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Feature Box --> 
+
+<!-- Brand Box -->
+<?php if($designs->home_section_6 == 1): ?>
+<div class="brand-logo">
+    <div class="container">
+      <div class="slider-items-products">
+        <div id="brand-logo-slider" class="product-flexslider hidden-buttons">
+          <div class="slider-items slider-width-col6">    
+          <?php foreach($bannerBrand as $banner): ?>
+            <div class="item"> <a href="<?php echo $banner->url; ?>"><img src="<?php echo $banner->image; ?>" alt="<?php echo $banner->title; ?>"></a> </div>
+          <?php endforeach; ?>            
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<?php endif; ?>
+<!-- End Brand Box --> 
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,58 @@
+
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.section.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">BÖLÜMÜ DÜZENLE</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+        
+        <?php echo Form::open(['url'=>'Pv3/section/save/'.$sections->id_section.'','role'=>'form','class'=>'form-horizontal']); ?>
+
+
+        <ul class="nav nav-tabs col-md-offset-2" role="tablist">
+        <?php foreach($languages as $language): ?>
+            <li role="presentation" <?php if($language->language_id=='1'): ?> class="active" <?php endif; ?>><a href="#language<?php echo $language->language_id; ?>" aria-controls="language<?php echo $language->language_id; ?>" role="tab" data-toggle="tab"><img src="<?php echo URL::to($language->language->image_flag); ?>" class="language img-thumbnail img-responsive" /></a></li>
+        <?php endforeach; ?>
+        </ul>
+
+        <br />
+
+        <div class="tab-content">
+        <?php foreach($languages as $language): ?>
+            <div role="tabpanel" class="tab-pane <?php if($language->language_id=='1'): ?> active <?php endif; ?>" id="language<?php echo $language->language_id; ?>">             
+
+            <div class="form-group">
+            <?php echo Form::label('name', 'Bölüm Adı', array('class'=>'col-md-2 control-label'));; ?>
+
+            <div class="col-md-10">
+            <?php echo Form::text('languageField['.$language->language_id.'][name]',$language->name,['class'=>'form-control']); ?>
+
+            </div>
+            </div>
+
+            </div>                  
+        <?php endforeach; ?>  
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> KAYDET</button>
+        </div>
+        </div>
+        
+        <?php echo Form::close(); ?>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

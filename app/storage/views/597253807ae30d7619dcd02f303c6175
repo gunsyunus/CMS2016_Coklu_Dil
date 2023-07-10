@@ -1,0 +1,45 @@
+
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.design.menu',array('page'=>'Logo'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">FAVICON DEĞİŞTİR</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+        
+        <?php echo Form::open(['url'=>'Pv3/design/faviconsave/','role'=>'form','class'=>'form-horizontal','files'=>'true']); ?>
+
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">
+        <?php echo Form::label('favicon_logo', 'Resim Seçiniz', array('class'=>'control-label')); ?>     
+        <?php echo Tooltip::standard('16 x 16 ölçülerinde ve JPG,PNG,GIF olmalıdır.'); ?>    
+        </div>
+        <div class="col-md-10">
+        <img src="<?php echo URL::to($designs->favicon_logo); ?>" class="banner img-thumbnail img-responsive" />
+        <?php echo Form::file('favicon_logo'); ?>
+
+        </div>
+        </div>  
+
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> KAYDET</button>
+        </div>
+        </div>
+        
+        <?php echo Form::close(); ?>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

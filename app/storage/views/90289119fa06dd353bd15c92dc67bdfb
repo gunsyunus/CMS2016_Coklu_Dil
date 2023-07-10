@@ -1,0 +1,212 @@
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.design.menu',array('page'=>'Metinler'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">METİNLER</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+
+    <?php echo Form::open(['url'=>'Pv3/design/textsave/','role'=>'form','class'=>'form-horizontal']); ?>
+
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#header" aria-controls="header" role="tab" data-toggle="tab">Anasayfa Banner Altı</a></li>
+        <li role="presentation"><a href="#footer" aria-controls="footer" role="tab" data-toggle="tab">Anasayfa Footer Üstü</a></li>
+        <li role="presentation"><a href="#hometab" aria-controls="hometab" role="tab" data-toggle="tab">Anasayfa Tab ve Linkler</a></li>
+        <li role="presentation"><a href="#product" aria-controls="product" role="tab" data-toggle="tab">Ürünler</a></li>
+    </ul>
+
+    <br />
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="header">
+
+        <!-- 1 -->
+
+        <div class="form-group">
+        <?php echo Form::label('home_text_1', 'Metin Kutusu - 1', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-4">
+        <?php echo Form::text('home_text_1',$designs->home_text_1,['class'=>'form-control']); ?>       
+        </div>
+        <div class="col-md-6">
+        <?php echo Form::text('home_text_2',$designs->home_text_2,['class'=>'form-control']); ?>       
+        </div>        
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('home_text_3', 'Metin Kutusu - 2', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-4">
+        <?php echo Form::text('home_text_3',$designs->home_text_3,['class'=>'form-control']); ?>       
+        </div>
+        <div class="col-md-6">
+        <?php echo Form::text('home_text_4',$designs->home_text_4,['class'=>'form-control']); ?>       
+        </div>        
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('home_text_5', 'Metin Kutusu - 3', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-4">
+        <?php echo Form::text('home_text_5',$designs->home_text_5,['class'=>'form-control']); ?>       
+        </div>
+        <div class="col-md-6">
+        <?php echo Form::text('home_text_6',$designs->home_text_6,['class'=>'form-control']); ?>       
+        </div>        
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('home_text_8', 'Metin Kutusu - 4', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-4">
+        <?php echo Form::text('home_text_7',$designs->home_text_7,['class'=>'form-control']); ?>       
+        </div>
+        <div class="col-md-6">
+        <?php echo Form::text('home_text_8',$designs->home_text_8,['class'=>'form-control']); ?>       
+        </div>        
+        </div>                        
+
+        <!-- 1 -->                
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="footer">
+            
+        <!-- 2 -->
+
+        <div class="form-group">
+        <?php echo Form::label('home_text_9', 'Metin Kutusu - 1', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-4">
+        <?php echo Form::text('home_text_9',$designs->home_text_9,['class'=>'form-control']); ?>       
+        </div>
+        <div class="col-md-6">
+        <?php echo Form::text('home_text_10',$designs->home_text_10,['class'=>'form-control']); ?>       
+        </div>        
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('home_text_11', 'Metin Kutusu - 2', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-4">
+        <?php echo Form::text('home_text_11',$designs->home_text_11,['class'=>'form-control']); ?>       
+        </div>
+        <div class="col-md-6">
+        <?php echo Form::text('home_text_12',$designs->home_text_12,['class'=>'form-control']); ?>       
+        </div>        
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('home_text_13', 'Metin Kutusu - 3', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-4">
+        <?php echo Form::text('home_text_13',$designs->home_text_13,['class'=>'form-control']); ?>       
+        </div>
+        <div class="col-md-6">
+        <?php echo Form::text('home_text_14',$designs->home_text_14,['class'=>'form-control']); ?>       
+        </div>        
+        </div>             
+
+        <!-- 2 -->      
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="product">
+            
+        <!-- 4 -->    
+
+        <div class="form-group">
+        <?php echo Form::label('product_title_text', 'Ürünler Başlık', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('product_title_text',$designs->product_title_text,['class'=>'form-control']); ?>       
+        </div>
+        </div>
+        
+        <div class="form-group">
+        <?php echo Form::label('similar_product_title', 'Benzer Ürünler Başlığı', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('similar_product_title',$designs->similar_product_title,['class'=>'form-control']); ?>       
+        </div>
+        </div>  
+
+        <!-- 4 -->      
+
+        </div>        
+
+        <div role="tabpanel" class="tab-pane" id="hometab">
+            
+        <!-- 5 -->
+
+        <div class="form-group">
+        <?php echo Form::label('home_tab_text_1', 'Anasayfa Tab', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-4">
+        <?php echo Form::text('home_tab_text_1',$designs->home_tab_text_1,['class'=>'form-control']); ?>       
+        </div>
+        <div class="col-md-6">
+        <?php echo Form::text('home_tab_text_2',$designs->home_tab_text_2,['class'=>'form-control']); ?>       
+        </div>        
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('home_tab_text_3', 'Anasayfa Alt Tab', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-4">
+        <?php echo Form::text('home_tab_text_3',$designs->home_tab_text_3,['class'=>'form-control']); ?>       
+        </div>
+        <div class="col-md-6">
+        <?php echo Form::text('home_tab_text_4',$designs->home_tab_text_4,['class'=>'form-control']); ?>       
+        </div>        
+        </div>        
+
+        <div class="form-group">
+        <?php echo Form::label('home_tab_text_5', 'Anasayfa Geniş Bant Ürünler', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('home_tab_text_5',$designs->home_tab_text_5,['class'=>'form-control']); ?>       
+        </div>
+        </div>      
+
+        <div class="form-group">
+        <?php echo Form::label('home_tab_text_6', 'Anasayfa Alt Banner', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('home_tab_text_6',$designs->home_tab_text_6,['class'=>'form-control']); ?>       
+        </div>
+        </div>      
+
+        <div class="form-group">
+        <?php echo Form::label('home_link', 'İletişim Linki', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('home_link',$designs->home_link,['class'=>'form-control']); ?>       
+        </div>
+        </div>
+
+        <!-- 5 -->      
+
+        </div>          
+
+    </div>
+          
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> KAYDET</button>
+        </div>
+        </div>
+        
+        <?php echo Form::close(); ?>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

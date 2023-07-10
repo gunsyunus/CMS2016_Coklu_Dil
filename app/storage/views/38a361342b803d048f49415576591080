@@ -1,0 +1,41 @@
+
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.user.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul"><b>KAYIT LİSTESİ :</b> <?php echo $users->name; ?> <?php echo $users->surname; ?> - <?php echo $users->email; ?> <span class="badge"><?php echo $logs->getTotal(); ?></span></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>İşlem Tarihi</th>
+          <th>İşlem</th>
+          <th>IP Adresi</th>          
+          <th>Kayıtlı E-Posta</th>          
+        </tr>
+      </thead>
+      <tbody>
+     	<?php foreach($logs as $log): ?>
+        <tr>
+          <td><?php echo $log->process_at->format('d.m.Y H:i'); ?></td>
+          <td><?php echo $log->process_text; ?></td>
+          <td><?php echo $log->ip; ?></td>
+          <td><?php echo $log->user_email; ?></td>
+        </tr> 
+   	  <?php endforeach; ?>      
+      </tbody>
+    </table>
+   	<div class="pagination"> <?php echo $logs->links(); ?> </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

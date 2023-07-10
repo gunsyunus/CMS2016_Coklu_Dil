@@ -1,0 +1,50 @@
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.page.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">SAYFA LİSTESİ <span class="badge"><?php echo $pages->getTotal(); ?></span></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Sayfa Adı</th>
+          <th>Linki</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+     	<?php foreach($pages as $page): ?>
+        <tr>
+          <th><?php echo $page->id_page; ?></th>
+          <td><?php echo $page->pagelanguage->title; ?></td>
+          <td><?php echo Sef::page($page->pagelanguage->sef_url); ?></td>
+          <td class="text-right">            
+          <div class="btn-group">
+          <a href="<?php echo URL::to('Pv3/page/edit/'.$page->id_page.''); ?>" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="caret"></span>
+          <span class="sr-only">Menü</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right">
+          <li class="delete"><a href="<?php echo URL::to('Pv3/page/delete/'.$page->id_page.''); ?>"><i class="fa fa-times"></i> Sayfayı Sil</a></li>
+          </ul>
+          </div>
+          </td>
+        </tr> 
+   	  <?php endforeach; ?>      
+      </tbody>
+    </table>
+   	<div class="pagination"> <?php echo $pages->links(); ?> </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

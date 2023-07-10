@@ -1,0 +1,48 @@
+
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.menuFooter.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">FOOTER MENÜLER <?php echo Tooltip::standard('Footer da üç kategori yan yana listelenir. Kategori ve parçalar görselin etkilenmemesi için silinemez !'); ?> </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Dil</th>        
+          <th>Sıralama</th>
+          <th>Menü Adı</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>       
+        <?php foreach($menus as $menu): ?>
+        <tr>
+          <td><img src="<?php echo URL::to($menu->language->image_flag); ?>" class="language img-thumbnail img-responsive" /></td>
+          <td>
+          <?php echo Form::open(['url'=>'Pv3/footer/save/'.$menu->id_menu.'','role'=>'form','class'=>'form-horizontal','files'=>'true']); ?>
+
+          <?php echo Form::text('sort',$menu->sort,['class'=>'form-control']); ?>
+
+          </td>
+          <td><?php echo Form::text('name',$menu->name,['class'=>'form-control']); ?></td>
+          <td><button type="submit" class="btn btn-success"><i class="fa fa fa-floppy-o"></i></button> <?php echo Form::close(); ?></td>
+          <td class="text-right"><a href="<?php echo URL::to('Pv3/footer/sub/'.$menu->id_menu.''); ?>" class="btn btn-warning btn-left">Alt Linkleri</a>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+      </tbody>
+    </table>
+    </div>
+    </div>
+  </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,243 @@
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.setting.menu',array('page'=>'Tanımlamalar'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">GENEL TANIMLAMALAR</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+
+    <?php echo Form::open(['url'=>'Pv3/setting/generalsave/','role'=>'form','class'=>'form-horizontal']); ?>
+
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#seo" aria-controls="seo" role="tab" data-toggle="tab">SEO</a></li>
+        <li role="presentation"><a href="#social" aria-controls="social" role="tab" data-toggle="tab">Sosyal Medya</a></li>
+        <li role="presentation"><a href="#copyright" aria-controls="copyright" role="tab" data-toggle="tab">Telif Hakkı</a></li>       
+        <li role="presentation"><a href="#config" aria-controls="config" role="tab" data-toggle="tab">Slogan</a></li>
+        <li role="presentation"><a href="#code" aria-controls="code" role="tab" data-toggle="tab">Takip Kodları</a></li>
+        <li role="presentation"><a href="#email" aria-controls="email" role="tab" data-toggle="tab">Mail Ayarları</a></li>        
+    </ul>
+
+    <br />
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="seo">
+
+        <!-- 1 -->
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">     
+        <?php echo Form::label('title', 'Site Başlığı', array('class'=>'control-label')); ?>     
+        <?php echo Tooltip::standard('Minimum 3 ve maksimum 70 karakter olmalıdır.'); ?>    
+        </div>
+        <div class="col-md-10">
+        <?php echo Form::text('title',$settings->title,['class'=>'form-control']); ?>       
+        </div>
+        </div>
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">     
+        <?php echo Form::label('keyword', 'Anahtar Kelimeler', array('class'=>'control-label')); ?>     
+        <?php echo Tooltip::standard('Maksimum 260 karakter olmalıdır.'); ?>    
+        </div>
+        <div class="col-md-10">
+        <?php echo Form::text('keyword',$settings->keyword,['class'=>'form-control']); ?>       
+        </div>
+        </div>        
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">     
+        <?php echo Form::label('description', 'Description (Açıklama)', array('class'=>'control-label')); ?>     
+        <?php echo Tooltip::standard('Maksimum 160 karakter olmalıdır.'); ?>    
+        </div>
+        <div class="col-md-10">
+        <?php echo Form::text('description',$settings->description,['class'=>'form-control']); ?>       
+        </div>
+        </div>     
+
+        <!-- 1 -->                
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="social">
+            
+        <!-- 2 -->
+
+        <div class="form-group">
+        <?php echo Form::label('social_facebook_url', 'Facebook Linki', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('social_facebook_url',$settings->social_facebook_url,['class'=>'form-control']); ?>       
+        </div>
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('social_twitter_url', 'Twitter Linki', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('social_twitter_url',$settings->social_twitter_url,['class'=>'form-control']); ?>       
+        </div>
+        </div>        
+
+        <div class="form-group">
+        <?php echo Form::label('social_google_url', 'Google Linki', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('social_google_url',$settings->social_google_url,['class'=>'form-control']); ?>       
+        </div>
+        </div>        
+
+        <div class="form-group">
+        <?php echo Form::label('social_linkedin_url', 'Linkedin Linki', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('social_linkedin_url',$settings->social_linkedin_url,['class'=>'form-control']); ?>       
+        </div>
+        </div>        
+
+        <div class="form-group">
+        <?php echo Form::label('social_youtube_url', 'Youtube Linki', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('social_youtube_url',$settings->social_youtube_url,['class'=>'form-control']); ?>       
+        </div>
+        </div>         
+
+        <div class="form-group">
+        <?php echo Form::label('social_instagram_url', 'Instagram Linki', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('social_instagram_url',$settings->social_instagram_url,['class'=>'form-control']); ?>       
+        </div>
+        </div>                   
+
+        <!-- 2 -->      
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="copyright">
+            
+        <!-- 3 -->
+
+        <div class="form-group">
+        <?php echo Form::label('copyright', 'Telif Hakkı Metin', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('copyright',$settings->copyright,['class'=>'form-control']); ?>       
+        </div>
+        </div>
+
+        <!-- 3 -->  
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="config">
+
+        <!-- 4 -->
+
+        <div class="form-group">
+        <?php echo Form::label('welcome_msg', 'Site Slogan', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('welcome_msg',$settings->welcome_msg,['class'=>'form-control']); ?>       
+        </div>
+        </div>
+
+        <!-- 4 -->  
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="code">
+
+        <!-- 5 -->
+
+        <div class="form-group">
+        <?php echo Form::label('tracing_body_after_code', 'HTML <body> Tag Sonrasına Ekle', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::textarea('tracing_body_after_code',$settings->tracing_body_after_code,['class'=>'form-control','rows'=>'4']); ?>
+
+        </div>
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('tracing_body_before_code', 'HTML </body> Tag Öncesine Ekle', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::textarea('tracing_body_before_code',$settings->tracing_body_before_code,['class'=>'form-control','rows'=>'4']); ?>
+
+        </div>
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('tracing_head_code', 'HTML </head> Tag Öncesine Ekle', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::textarea('tracing_head_code',$settings->tracing_head_code,['class'=>'form-control','rows'=>'4']); ?>      
+        </div>
+        </div>                     
+
+        <!-- 5 -->  
+
+        </div>         
+        <div role="tabpanel" class="tab-pane" id="email">
+
+        <!-- 7 -->
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">     
+        <?php echo Form::label('email_admin', 'Yönetici E-Posta', array('class'=>'control-label')); ?>     
+        <?php echo Tooltip::standard('Sipariş verildiğinde, sistemde bir hata olduğunda YÖNETİCİYE mail gönderilir.'); ?>    
+        </div>
+        <div class="col-md-10">
+        <?php echo Form::text('email_admin',$settings->email_admin,['class'=>'form-control']); ?>       
+        </div>
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('email_admin_name', 'Yönetici Mail Görünür Adı', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('email_admin_name',$settings->email_admin_name,['class'=>'form-control']); ?>       
+        </div>
+        </div>        
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">     
+        <?php echo Form::label('email_info', 'Müşteri Hizmetleri E-Posta', array('class'=>'control-label')); ?>     
+        <?php echo Tooltip::standard('Kullanıcılara kargo, yeni üyelik vb. durumlarda bu mail üzerinden gönderilir.'); ?>    
+        </div>
+        <div class="col-md-10">
+        <?php echo Form::text('email_info',$settings->email_info,['class'=>'form-control']); ?>       
+        </div>
+        </div>
+
+        <div class="form-group">
+        <?php echo Form::label('email_info_name', 'Müşteri Hizmetleri Mail Görünür Adı', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('email_info_name',$settings->email_info_name,['class'=>'form-control']); ?>       
+        </div>
+        </div>          
+
+        <!-- 7 -->  
+
+        </div>              
+    </div>
+          
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> KAYDET</button>
+        </div>
+        </div>
+        
+        <?php echo Form::close(); ?>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

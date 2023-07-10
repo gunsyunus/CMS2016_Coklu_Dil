@@ -1,0 +1,42 @@
+
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.setting.menu',array('page'=>'Ödeme Ayarları'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">ÖDEME AYARLARI</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+
+    <?php echo Form::open(['url'=>'Pv3/setting/ordersave/','role'=>'form','class'=>'form-horizontal']); ?>
+
+
+        <div class="form-group">
+        <?php echo Form::label('order_method', 'Sipariş Tamamlama', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::select('order_method', array('1'=>'Üyelik Zorunlu','2'=>'Üyelik / Üyeliksiz Satış','3'=>'Hızlı Satın Al'),$settings->order_method,['class'=>'form-control']); ?>
+
+        </div>
+        </div>        
+
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> KAYDET</button>
+        </div>
+        </div>
+        
+    <?php echo Form::close(); ?>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

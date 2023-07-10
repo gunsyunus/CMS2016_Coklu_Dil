@@ -1,0 +1,106 @@
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('panel.module.page.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->startSection('meta'); ?>
+<?php echo HTML::style('panelv3/css/editor.min.css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('body'); ?>
+<?php echo HTML::script('panelv3/js/jquery.editor.min.js'); ?>
+
+<?php echo HTML::script('panelv3/js/jquery.editor.tr.min.js'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title panel-modul">YENİ SAYFA OLUŞTUR</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    <div class="col-md-12">
+        
+        <?php echo Form::open(['url'=>'Pv3/page/add','role'=>'form','class'=>'form-horizontal']); ?>
+
+
+        <div class="form-group">
+        <?php echo Form::label('title', 'Sayfa Başlığı', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('title',null,['class'=>'form-control']); ?>       
+        </div>
+        </div>        
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">     
+        <?php echo Form::label('keyword', 'Anahtar Kelimeler', array('class'=>'control-label')); ?>     
+        <?php echo Tooltip::standard('Maksimum 260 karakter olmalıdır.'); ?>    
+        </div>
+        <div class="col-md-10">
+        <?php echo Form::text('keyword',null,['class'=>'form-control']); ?>       
+        </div>
+        </div>        
+
+        <div class="form-group">
+        <div class="col-md-2 text-right">     
+        <?php echo Form::label('description', 'Description (Açıklama)', array('class'=>'control-label')); ?>     
+        <?php echo Tooltip::standard('Maksimum 160 karakter olmalıdır.'); ?>    
+        </div>
+        <div class="col-md-10">
+        <?php echo Form::text('description',null,['class'=>'form-control']); ?>       
+        </div>
+        </div>   
+
+        <div class="form-group">
+        <?php echo Form::label('status', 'Sayfa Durumu', array('class'=>'col-md-2 control-label')); ?>
+
+        <div class="col-md-10">
+        <?php echo Form::checkbox('status', '1', true, array('class'=>'checkboxes'));; ?>
+
+        </div>
+        </div>           
+
+        <div class="form-group">
+        <?php echo Form::label('section_id', 'Bölüm', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::select('section_id',$sections,'0',['class'=>'form-control']); ?>
+
+        </div>
+        </div>    
+
+        <div class="form-group">
+        <?php echo Form::label('sort', 'Bölüm Sıralama', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">
+        <?php echo Form::text('sort',null,['class'=>'form-control']); ?>       
+        </div>
+        </div>          
+
+        <div class="form-group">
+        <?php echo Form::label('content', 'Sayfa İçeriği', array('class'=>'col-md-2 control-label'));; ?>
+
+        <div class="col-md-10">        
+        <?php echo Form::textarea('content',null,['class'=>'editor']); ?>
+
+        </div>
+        </div>                
+
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-success"><i class="fa fa-plus-circle"></i> EKLE</button>
+        </div>
+        </div>
+        
+        <?php echo Form::close(); ?>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('panel.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
